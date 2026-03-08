@@ -1,0 +1,104 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <span class="bc-item">portfolio</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item">src / app</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item active">about.ts</span>
+</div>
+
+<div class="about-container">
+
+  <!-- Section header as code comment -->
+  <div class="section-header">
+    <span class="comment-line">{{'/**'}}</span>
+    <span class="comment-line"> * &#64;section About</span>
+    <span class="comment-line"> * &#64;author {{ devInfo.name }}</span>
+    <span class="comment-line"> * &#64;location {{ devInfo.location }}</span>
+    <span class="comment-line"> */</span>
+  </div>
+
+  <div class="about-grid">
+
+    <!-- Left: Bio -->
+    <div class="about-bio-section">
+
+      <h2 class="section-title">
+        <span class="keyword">class </span>
+        <span class="class-name">Developer</span>
+        <span class="operator"> {{'{}'}}</span>
+      </h2>
+
+      <div class="bio-card">
+        <div class="bio-header">
+          <div class="avatar-placeholder">
+            <span class="avatar-initials">{{ initials }}</span>
+          </div>
+          <div class="bio-meta">
+            <h3 class="bio-name">{{ devInfo.name }}</h3>
+            <p class="bio-title">{{ devInfo.title }}</p>
+            <p class="bio-location">
+              <span class="loc-icon">📍</span>
+              {{ devInfo.location }}
+            </p>
+          </div>
+        </div>
+
+        <p class="bio-text">{{ devInfo.bio }}</p>
+
+        <div class="bio-contact">
+          <span class="contact-label">// email:</span>
+          <a [href]="'mailto:' + devInfo.email" class="contact-value">{{ devInfo.email }}</a>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="interests">
+        <h3 class="subsection-title">
+          <span class="comment">// interests & hobbies</span>
+        </h3>
+        <div class="interests-grid">
+          <div *ngFor="let interest of interests" class="interest-chip">
+            <span>{{ interest.icon }}</span>
+            <span>{{ interest.label }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Timeline / Experience -->
+    <div class="timeline-section">
+
+      <h2 class="section-title">
+        <span class="keyword">const </span>
+        <span class="variable">experience</span>
+        <span class="operator"> = [</span>
+      </h2>
+
+      <div class="timeline">
+        <div *ngFor="let item of timeline; let last = last" class="timeline-item">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line" *ngIf="!last"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-date">{{ item.year }}</div>
+            <div class="timeline-role">{{ item.role }}</div>
+            <div class="timeline-company">&#64; {{ item.company }}</div>
+            <p class="timeline-description">{{ item.description }}</p>
+            <div class="timeline-tech">
+              <span *ngFor="let tech of item.tech" class="tech-tag">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-close">
+        <span class="operator">];</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>

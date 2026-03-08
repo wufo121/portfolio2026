@@ -1,0 +1,160 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <span class="bc-item">portfolio / src / app</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item active">contact.scss</span>
+</div>
+
+<div class="contact-container">
+
+  <div class="section-header">
+    <div class="code-comment">/* contact.scss — Let's work together */</div>
+    <h2 class="section-title">
+      <span class="property">.contact-form</span>
+      <span class="operator"> {{'{'}} ... {{ '}' }}</span>
+    </h2>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- Left: Form -->
+    <div class="form-panel">
+
+      <!-- Success state -->
+      <div *ngIf="submitted" class="success-state">
+        <div class="success-icon">✓</div>
+        <h3 class="success-title">Message sent!</h3>
+        <p class="success-msg">
+          <span class="comment">// I'll get back to you as soon as possible.</span>
+        </p>
+        <button class="btn-reset" (click)="resetForm()">Send another message</button>
+      </div>
+
+      <!-- Form -->
+      <form *ngIf="!submitted" (ngSubmit)="onSubmit()" class="contact-form">
+
+        <div class="form-field">
+          <label class="field-label">
+            <span class="property">name</span>
+            <span class="operator">: </span>
+            <span class="type">string</span>
+          </label>
+          <input
+            class="field-input"
+            type="text"
+            [(ngModel)]="form.name"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label">
+            <span class="property">email</span>
+            <span class="operator">: </span>
+            <span class="type">string</span>
+          </label>
+          <input
+            class="field-input"
+            type="email"
+            [(ngModel)]="form.email"
+            name="email"
+            placeholder="your@email.com"
+            required
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label">
+            <span class="property">subject</span>
+            <span class="operator">: </span>
+            <span class="type">string</span>
+          </label>
+          <input
+            class="field-input"
+            type="text"
+            [(ngModel)]="form.subject"
+            name="subject"
+            placeholder="What's this about?"
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="field-label">
+            <span class="property">message</span>
+            <span class="operator">: </span>
+            <span class="type">string</span>
+          </label>
+          <textarea
+            class="field-input field-textarea"
+            [(ngModel)]="form.message"
+            name="message"
+            placeholder="Your message here..."
+            rows="6"
+            required
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="submit-btn"
+          [class.loading]="submitting"
+          [disabled]="submitting"
+        >
+          <span *ngIf="!submitting">
+            <span class="keyword">return </span>
+            <span class="function">sendMessage</span>
+            <span class="operator">();</span>
+          </span>
+          <span *ngIf="submitting" class="loading-text">
+            Sending<span class="dots">...</span>
+          </span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Right: Info -->
+    <div class="info-panel">
+
+      <div class="info-card">
+        <div class="code-comment">// Available for</div>
+        <ul class="available-list">
+          <li><span class="bullet">→</span> Full-time positions</li>
+          <li><span class="bullet">→</span> Freelance projects</li>
+          <li><span class="bullet">→</span> Open-source collaboration</li>
+          <li><span class="bullet">→</span> Technical consulting</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <div class="code-comment">// Find me on</div>
+        <div class="social-links-list">
+          <a
+            *ngFor="let link of socialLinks"
+            [href]="link.url"
+            class="social-item"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="social-label">{{ getSocialIcon(link.icon) }}</span>
+            <span class="social-url">{{ link.url.replace('https://', '').replace('mailto:', '') }}</span>
+            <span class="social-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="info-card response-time">
+        <div class="code-comment">// Response time</div>
+        <div class="response-badge">
+          <span class="badge-dot"></span>
+          Usually within 24 hours
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

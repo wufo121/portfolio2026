@@ -1,0 +1,59 @@
+<div class="readme">
+
+  <h1>Portfolio Terminal Guide</h1>
+
+  <p class="intro">
+    Welcome to the interactive terminal of this portfolio.
+    This interface simulates a command line environment where you can explore
+    information about the developer, projects and skills.
+  </p>
+
+  <div class="tip">
+    Type a command in the terminal and press <span>Enter</span>.
+  </div>
+
+  <h2>Available Commands</h2>
+
+  <div class="commands">
+
+    <div class="command" *ngFor="let cmd of commands">
+      <code>{{cmd.name}}</code>
+      <p>{{cmd.description}}</p>
+    </div>
+
+  </div>
+
+  <h2>Examples</h2>
+
+  <div class="examples">
+
+    <div class="line">
+      <span class="prompt">></span> help
+    </div>
+
+    <div class="line">
+      <span class="prompt">></span> whoami
+    </div>
+
+    <div class="line">
+      <span class="prompt">></span> skills
+    </div>
+
+    <div class="line">
+      <span class="prompt">></span> echo Hello World
+    </div>
+
+  </div>
+
+  <h2>Navigation</h2>
+
+  <ul class="navigation">
+    <li><span>↑</span> Previous command</li>
+    <li><span>↓</span> Next command</li>
+  </ul>
+
+  <div class="footer">
+    Try starting with the command <code>whoami</code>.
+  </div>
+
+</div>

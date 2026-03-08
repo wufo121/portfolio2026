@@ -1,0 +1,104 @@
+.readme {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  color: var(--syntax-blue);
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 35px;
+  font-size: var(--font-size-xl);
+  color: var(--syntax-green);
+}
+
+.intro {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tip {
+  margin-top: 15px;
+  background: var(--bg-secondary);
+  padding: 10px 15px;
+  border-left: 3px solid var(--accent-blue);
+  font-size: var(--font-size-sm);
+}
+
+.tip span {
+  color: var(--syntax-orange);
+}
+
+.commands {
+  margin-top: 20px;
+  display: grid;
+  gap: 15px;
+}
+
+.command {
+  background: var(--bg-secondary);
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.command code {
+  color: var(--syntax-green);
+  font-size: var(--font-size-md);
+}
+
+.command p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.examples {
+  margin-top: 15px;
+  background: var(--bg-secondary);
+  border-radius: 4px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.line {
+  font-family: var(--font-mono);
+  margin-bottom: 6px;
+}
+
+.prompt {
+  color: var(--syntax-green);
+  margin-right: 8px;
+}
+
+.navigation {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.navigation li {
+  margin-bottom: 6px;
+}
+
+.navigation span {
+  color: var(--syntax-orange);
+}
+
+.footer {
+  margin-top: 30px;
+  padding: 12px;
+  background: var(--bg-secondary);
+  border-left: 3px solid var(--accent-blue);
+}
+
+code {
+  color: var(--syntax-green);
+  font-family: var(--font-mono);
+}

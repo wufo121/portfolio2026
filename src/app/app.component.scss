@@ -1,0 +1,187 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.vscode-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+// ── Body (below title bar) ───────────────────────────────────
+.vscode-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+// ── Activity Bar ─────────────────────────────────────────────
+.activity-bar {
+  width: var(--activity-bar-width);
+  background: var(--activity-bar);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.activity-icon {
+  width: 48px;
+  height: 48px;
+  @include flex-center;
+  cursor: pointer;
+  opacity: 0.6;
+  position: relative;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.active {
+    opacity: 1;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 2px;
+      background: var(--text-primary);
+      border-radius: 0 2px 2px 0;
+    }
+  }
+
+  // Icon placeholders – replace with real SVG icons or a library
+  span {
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .icon-explorer::before    { content: '📁'; }
+  .icon-search::before      { content: '🔍'; }
+  .icon-git::before         { content: '⎇'; font-family: var(--font-mono); font-size: 18px; color: var(--text-primary); }
+  .icon-extensions::before  { content: '⊞'; font-family: var(--font-mono); font-size: 20px; color: var(--text-primary); }
+  .icon-settings::before    { content: '⚙'; font-family: var(--font-mono); font-size: 18px; color: var(--text-primary); }
+  .icon-account::before     { content: '👤'; }
+}
+
+.activity-spacer {
+  flex: 1;
+}
+
+// ── Editor Area ──────────────────────────────────────────────
+.editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.editor-content {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  min-height: 0;
+}
+
+// Section views
+.section-view {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  @include scrollbar;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+// ── Terminal Panel ───────────────────────────────────────────
+.terminal-panel {
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  height: 28px;
+  overflow: hidden;
+  transition: height 0.2s ease;
+
+  &.open {
+    height: 200px;
+  }
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 8px 0 0;
+  height: 28px;
+}
+
+.terminal-tabs {
+  display: flex;
+  height: 100%;
+}
+
+.terminal-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-ui);
+  color: var(--text-muted);
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-right: 1px solid var(--border-color);
+  transition: color 0.15s ease;
+
+  &:hover { color: var(--text-secondary); }
+
+  &.active {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--accent-blue);
+  }
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.terminal-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 6px;
+  font-size: var(--font-size-md);
+  border-radius: 2px;
+  transition: all 0.15s ease;
+  line-height: 1;
+
+  &:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────────
+@include mobile {
+  .activity-bar {
+    display: none;
+  }
+}

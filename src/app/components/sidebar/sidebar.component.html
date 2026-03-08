@@ -1,0 +1,59 @@
+<!-- Sidebar -->
+<div class="sidebar">
+
+  <!-- Section title -->
+  <div class="sidebar-header" (click)="toggleExplorer()">
+    <span class="sidebar-title">EXPLORER</span>
+    <span class="sidebar-chevron">{{ explorerOpen() ? '▾' : '▸' }}</span>
+  </div>
+
+  <div class="sidebar-content" [class.collapsed]="!explorerOpen()">
+
+    <!-- Open Editors -->
+    <div class="tree-section">
+      <div class="tree-section-label">
+        <span class="chevron">▾</span>
+        OPEN EDITORS
+      </div>
+    </div>
+
+    <!-- Portfolio folder -->
+    <div class="tree-section">
+      <div class="tree-section-label" (click)="toggleSrc()">
+        <span class="chevron">{{ srcFolderOpen() ? '▾' : '▸' }}</span>
+        📁 PORTFOLIO
+      </div>
+
+      <div class="tree-items" [class.collapsed]="!srcFolderOpen()">
+
+        <!-- src folder -->
+        <div class="tree-item folder" (click)="toggleApp()">
+          <span class="tree-indent"></span>
+          <span class="chevron">{{ appFolderOpen() ? '▾' : '▸' }}</span>
+          <span class="folder-icon">📂</span>
+          <span class="item-name">src / app</span>
+        </div>
+
+        <!-- files -->
+        <div
+          *ngFor="let file of files"
+          class="tree-item file"
+          [class.active]="selectedFile() === file.name"
+          [class.disabled]="!file.section"
+          (click)="selectFile(file)"
+          [class.collapsed]="!appFolderOpen()"
+        >
+          <span class="tree-indent"></span>
+          <span class="tree-indent"></span>
+          <span class="file-ext-badge" [ngStyle]="{ color: file.iconColor }">
+            {{ getIconLabel(file.extension) }}
+          </span>
+          <span class="item-name">{{ file.name }}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

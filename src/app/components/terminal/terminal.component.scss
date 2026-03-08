@@ -1,0 +1,93 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.terminal-body {
+  padding: 6px 12px;
+  height: calc(200px - 29px); // 200px panel - header
+   max-height: calc(100vh - 200px - 50px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--bg-panel);
+  @include scrollbar(4px);
+}
+
+// ── Lines ─────────────────────────────────────────────────────
+.terminal-line {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.line-output {
+  color: var(--text-secondary);
+  padding-left: 2px;
+}
+
+.line-success {
+  color: var(--syntax-green);
+  padding-left: 2px;
+}
+
+.line-error {
+  color: #f14c4c;
+  padding-left: 2px;
+}
+
+// ── Prompt ────────────────────────────────────────────────────
+.line-prompt,
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.prompt-user {
+  color: #4ec9b0;
+  font-weight: 600;
+}
+
+.prompt-at {
+  color: var(--text-muted);
+}
+
+.prompt-host {
+  color: var(--syntax-blue);
+  font-weight: 600;
+}
+
+.prompt-sep {
+  color: var(--text-muted);
+  margin-right: 6px;
+}
+
+.prompt-cmd {
+  color: var(--text-primary);
+}
+
+// ── Input ─────────────────────────────────────────────────────
+.terminal-input-line {
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  flex: 1;
+  caret-color: var(--text-primary);
+  padding: 0;
+  margin-left: 6px;
+  line-height: 1.6;
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}

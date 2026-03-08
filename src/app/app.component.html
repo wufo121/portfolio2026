@@ -1,0 +1,91 @@
+<!-- VS Code Layout -->
+<div class="vscode-layout">
+
+  <!-- Title Bar / Navbar -->
+  <app-navbar (tabChanged)="portfolioService.setActiveSection($event)"></app-navbar>
+
+  <!-- Main Content Area -->
+  <div class="vscode-body">
+
+    <!-- Activity Bar -->
+    <div class="activity-bar">
+      <div class="activity-icon active" title="Explorer">
+        <span class="icon-explorer"></span>
+      </div>
+      <div class="activity-icon" title="Search">
+        <span class="icon-search"></span>
+      </div>
+      <div class="activity-icon" title="Git">
+        <span class="icon-git"></span>
+      </div>
+      <div class="activity-icon" title="Extensions">
+        <span class="icon-extensions"></span>
+      </div>
+      <div class="activity-spacer"></div>
+      <div class="activity-icon" title="Settings">
+        <span class="icon-settings"></span>
+      </div>
+    </div>
+
+    <!-- Sidebar (File Explorer) -->
+    <app-sidebar
+      (fileSelected)="portfolioService.setActiveSection($event)">
+    </app-sidebar>
+
+    <!-- Editor Area -->
+    <div class="editor-area">
+
+      <!-- Editor Content -->
+      <div class="editor-content">
+
+        <div class="section-view" [class.visible]="activeSection === 'hero'">
+          <app-hero></app-hero>
+        </div>
+
+        <div class="section-view" [class.visible]="activeSection === 'about'">
+          <app-about></app-about>
+        </div>
+
+        <div class="section-view" [class.visible]="activeSection === 'skills'">
+          <app-skills></app-skills>
+        </div>
+
+        <div class="section-view" [class.visible]="activeSection === 'projects'">
+          <app-projects></app-projects>
+        </div>
+
+        <div class="section-view" [class.visible]="activeSection === 'read-me'">
+          <app-readme></app-readme>
+        </div>
+
+        <div class="section-view" [class.visible]="activeSection === 'contact'">
+          <app-contact></app-contact>
+        </div>
+
+      </div>
+
+      <!-- Terminal Panel -->
+      <div class="terminal-panel" [class.open]="terminalOpen">
+        <div class="terminal-header">
+          <div class="terminal-tabs">
+            <div class="terminal-tab active">TERMINAL</div>
+            <div class="terminal-tab">PROBLEMS</div>
+            <div class="terminal-tab">OUTPUT</div>
+          </div>
+          <div class="terminal-controls">
+            <button class="terminal-btn" (click)="toggleTerminal()" title="Toggle Terminal">
+              {{ terminalOpen ? '∨' : '∧' }}
+            </button>
+          </div>
+        </div>
+        <app-terminal *ngIf="terminalOpen"></app-terminal>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Status Bar -->
+  <app-statusbar></app-statusbar>
+
+</div>

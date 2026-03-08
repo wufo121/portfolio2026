@@ -1,0 +1,62 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <span class="bc-item">portfolio / src / app</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item active">skills.ts</span>
+</div>
+
+<div class="skills-container">
+
+  <div class="section-header">
+    <div class="code-comment">// skills.ts — Technical proficiency overview</div>
+    <h2 class="section-title">
+      <span class="keyword">interface </span>
+      <span class="class-name">TechStack</span>
+      <span class="operator"> {{'{'}} ... {{ '}' }}</span>
+    </h2>
+  </div>
+
+  <!-- Category Tabs (like VS Code tabs but smaller) -->
+  <div class="category-tabs">
+    <button
+      *ngFor="let cat of skillCategories"
+      class="cat-tab"
+      [class.active]="activeCategory() === cat.key"
+      (click)="setCategory(cat.key)"
+    >
+      <span class="cat-dot"></span>
+      {{ cat.label }}
+    </button>
+  </div>
+
+  <!-- Skills Grid -->
+  <div class="skills-grid" *ngIf="currentCategory">
+  <div *ngFor="let skill of currentCategory.skills; let i = index"
+    class="skill-card"
+    [style.animation-delay]="i * 0.07 + 's'"
+    [style.border-color]="getLevelColor(skill.level)"
+  >
+    <div class="skill-header">
+      <span class="skill-name">{{ skill.name }}</span>
+      <span class="skill-level-label"
+        [style.color]="getLevelColor(skill.level)"
+        [style.background-color]="getLevelColor(skill.level) + '15'"> 
+        {{ getLevelLabel(skill.level) }}
+      </span>
+    </div>
+  </div>
+</div>
+
+  <!-- All skills overview -->
+  <div class="all-skills-section">
+    <div class="code-comment">// All technologies I've worked with</div>
+    <div class="all-skills-list">
+      <ng-container *ngFor="let cat of skillCategories">
+        <span *ngFor="let skill of cat.skills" class="skill-pill">
+          {{ skill.name }}
+        </span>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

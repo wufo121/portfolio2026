@@ -1,0 +1,91 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <span class="bc-item">portfolio</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item">src</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item">app</span>
+  <span class="bc-sep">›</span>
+  <span class="bc-item active">home.ts</span>
+</div>
+
+<!-- Code + Hero content side by side -->
+<div class="hero-layout">
+
+  <!-- Left: Code editor area -->
+  <div class="code-panel">
+    <div class="code-block">
+      <div *ngFor="let line of codeLines" class="code-line">
+        <span class="line-num">{{ line.num }}</span>
+        <span class="line-content">
+          <ng-container *ngFor="let token of line.tokens">
+            <span [class]="token.cls">{{ token.text }}</span>
+          </ng-container>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Hero info -->
+  <div class="hero-panel">
+    <div class="hero-content">
+
+      <div class="hero-greeting">
+        <span class="greeting-text">&gt;&gt; Hello, World!</span>
+      </div>
+
+      <h1 class="hero-name">{{ devInfo.name }}</h1>
+
+      <div class="hero-title-wrapper">
+        <h2 class="hero-title">
+          {{ displayedTitle() }}<span class="cursor" [class.blink]="showCursor()">|</span>
+        </h2>
+      </div>
+
+      <p class="hero-bio">{{ devInfo.bio }}</p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-value">{{ devInfo.yearsOfExperience }}+</span>
+          <span class="stat-label">Years exp.</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">{{ devInfo.projectsCompleted }}+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">{{ devInfo.coffeeConsumed }}</span>
+          <span class="stat-label">☕ consumed</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" (click)="navigateTo('projects')">
+          <span>View Projects</span>
+          <span class="btn-arrow">→</span>
+        </button>
+        <button class="btn btn-secondary" (click)="navigateTo('contact')">
+          Contact Me
+        </button>
+      </div>
+
+      <div class="social-links">
+        <a
+          *ngFor="let link of socialLinks"
+          [href]="link.url"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.title]="link.label"
+        >
+          <span class="social-icon">{{ getSocialIcon(link.icon) }}</span>
+          <span class="social-label">{{ link.label }}</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

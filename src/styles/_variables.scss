@@ -1,0 +1,77 @@
+// ============================================
+// VS CODE THEME - VARIABLES
+// ============================================
+
+// Colors - VS Code Dark+ palette
+:root {
+  --bg-primary: #1e1e1e;
+  --bg-secondary: #252526;
+  --bg-tertiary: #2d2d30;
+  --bg-sidebar: #333333;
+  --bg-panel: #1e1e1e;
+  --bg-tab: #2d2d30;
+  --bg-tab-active: #1e1e1e;
+  --bg-hover: #2a2d2e;
+  --bg-selection: #264f78;
+
+  --border-color: #3d3d3d;
+  --border-light: #4a4a4a;
+
+  --text-primary: #d4d4d4;
+  --text-secondary: #9d9d9d;
+  --text-muted: #6b6b6b;
+  --text-bright: #ffffff;
+  --text-filename: #cccccc;
+
+  // Syntax highlight colors
+  --syntax-blue: #569cd6;
+  --syntax-light-blue: #9cdcfe;
+  --syntax-green: #4ec9b0;
+  --syntax-string: #ce9178;
+  --syntax-comment: #6a9955;
+  --syntax-keyword: #c586c0;
+  --syntax-number: #b5cea8;
+  --syntax-function: #dcdcaa;
+  --syntax-class: #4ec9b0;
+  --syntax-variable: #9cdcfe;
+  --syntax-orange: #d7ba7d;
+
+  // Accent / UI colors
+  --accent-blue: #007acc;
+  --accent-blue-hover: #1a87d0;
+  --accent-green: #4ec9b0;
+  --status-bar: #007acc;
+  --activity-bar: #333333;
+  --tab-border-active: #007acc;
+
+  // File explorer icons
+  --icon-ts: #3178c6;
+  --icon-scss: #cd6799;
+  --icon-html: #e34c26;
+  --icon-json: #f1d502;
+
+  // Spacing
+  --sidebar-width: 240px;
+  --activity-bar-width: 48px;
+  --tab-height: 35px;
+  --status-bar-height: 22px;
+
+  // Typography
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-ui: 'Segoe UI', 'SF Pro Display', system-ui, sans-serif;
+
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 13px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+  --font-size-4xl: 48px;
+}
+
+// Breakpoints
+$bp-mobile: 768px;
+$bp-tablet: 1024px;
+$bp-desktop: 1280px;

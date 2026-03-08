@@ -1,0 +1,42 @@
+<!-- Terminal Body -->
+<div class="terminal-body" #terminalBody>
+
+  <!-- Output Lines -->
+  <div *ngFor="let line of lines" class="terminal-line" [ngClass]="'line-' + line.type">
+    <ng-container [ngSwitch]="line.type">
+
+      <span *ngSwitchCase="'command'" class="line-prompt">
+        <span class="prompt-user">visitor</span>
+        <span class="prompt-at">&#64;</span>
+        <span class="prompt-host">portfolio</span>
+        <span class="prompt-sep">:~$</span>
+        <span class="prompt-cmd"> {{ line.content }}</span>
+      </span>
+
+      <span *ngSwitchCase="'output'" class="line-output">{{ line.content }}</span>
+      <span *ngSwitchCase="'success'" class="line-success">{{ line.content }}</span>
+      <span *ngSwitchCase="'error'" class="line-error">{{ line.content }}</span>
+
+    </ng-container>
+  </div>
+
+  <!-- Input Line -->
+  <div class="terminal-input-line">
+    <span class="prompt-user">visitor</span>
+    <span class="prompt-at">&#64;</span>
+    <span class="prompt-host">portfolio</span>
+    <span class="prompt-sep">:~$</span>
+    <input
+      #terminalInput
+      class="terminal-input"
+      type="text"
+      [(ngModel)]="currentInput"
+      (keydown.enter)="executeCommand()"
+      (keydown)="onKeydown($event)"
+      autocomplete="off"
+      autocorrect="off"
+      spellcheck="false"
+    />
+  </div>
+
+</div>

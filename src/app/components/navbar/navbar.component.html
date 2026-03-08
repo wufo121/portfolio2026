@@ -1,0 +1,43 @@
+<!-- Title Bar -->
+<div class="title-bar">
+  <div class="window-controls">
+    <span class="control close"></span>
+    <span class="control minimize"></span>
+    <span class="control maximize"></span>
+  </div>
+  <div class="title-text">
+    <span class="title-name">portfolio</span>
+    <span class="title-sep"> — </span>
+    <span class="title-app">Visual Studio Code</span>
+  </div>
+  <div class="title-spacer"></div>
+</div>
+
+<!-- Menu Bar -->
+<div class="menu-bar">
+  <span class="menu-item">File</span>
+  <span class="menu-item">Edit</span>
+  <span class="menu-item">View</span>
+  <span class="menu-item">Go</span>
+  <span class="menu-item">Run</span>
+  <span class="menu-item">Terminal</span>
+  <span class="menu-item">Help</span>
+</div>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <div
+    *ngFor="let tab of tabs"
+    class="tab"
+    [class.active]="tab.active"
+    [class.modified]="tab.modified"
+    (click)="selectTab(tab)"
+  >
+    <span class="tab-icon" [ngClass]="'ext-' + getExtension(tab.label)"[style.color]="tab.iconColor">
+      {{ tab.icon }}
+    </span>
+    <span class="tab-label">{{ tab.label }}</span>
+    <button class="tab-close" (click)="$event.stopPropagation()">×</button>
+  </div>
+  <div class="tab-spacer"></div>
+</div>

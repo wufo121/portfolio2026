@@ -1,0 +1,106 @@
+// ============================================
+// MIXINS
+// ============================================
+@use 'variables' as *;
+
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin scrollbar($width: 8px) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--border-light);
+    border-radius: 2px;
+    &:hover {
+      background: var(--text-muted);
+    }
+  }
+}
+
+@mixin tab-style {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  height: var(--tab-height);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-ui);
+  color: var(--text-secondary);
+  border-right: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+  gap: 6px;
+  user-select: none;
+
+  &:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background: var(--bg-tab-active);
+    color: var(--text-primary);
+    border-top: 1px solid var(--tab-border-active);
+    border-bottom: 1px solid transparent;
+  }
+}
+
+@mixin code-line {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+@mixin glow($color: #007acc, $intensity: 0.4) {
+  box-shadow: 0 0 8px rgba($color, $intensity);
+}
+
+@mixin fade-in($delay: 0s, $duration: 0.4s) {
+  animation: fadeIn $duration ease forwards;
+  animation-delay: $delay;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) { @content; }
+}
+@mixin tablet {
+  @media (max-width: $bp-tablet) { @content; }
+}
